@@ -9,6 +9,10 @@ public class Player {
 		_isUser = isUser;
 	}
 	
+	public boolean IsUser(){
+		return _isUser;
+	}
+	
 	public int getX(){
 		return _x;
 	}

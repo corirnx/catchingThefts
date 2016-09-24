@@ -29,7 +29,8 @@ public class GameStart {
 		GridControl control = new GridControl(grid, new Player[]{theft, user});
 		
 		System.out.println("===============");
-		System.out.println("go!");
+		System.out.println("catch the theft (T) as the user (U)");
+		System.out.println("enter as direction: 'down', 'up', 'left', 'right'");
 		System.out.println("===============");
 		
 		control.start();
