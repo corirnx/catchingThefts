@@ -1,75 +1,83 @@
 package catchingThefts.Model;
 
-import java.util.HashMap;
-import java.util.Map;
+import catchingThefts.Helper.ConsoleLogger;
 
 public class Grid {
 
-	int currSize;
-	String[] currGrid;
-		
-	public Grid(int size){
-		currSize = size;
+	int _size;
+	String[] _grid;
+
+	public Grid(int size) {
+		_size = size;
 		buildGrid();
 	}
-	
-	void clearGrid(){
-		int len = currGrid.length;
-		for(int i = 0; i <len; i++){
-			currGrid[i] = getEmptyCol(len);
+
+	void clearGrid() {
+		int len = _grid.length;
+		for (int i = 0; i < len; i++) {
+			_grid[i] = getEmptyCol(len);
 		}
 	}
-	
-	String getEmptyCol(int length){
+
+	String getEmptyCol(int length) {
 		String col = "";
-		for(int j = 0; j < length; j++){
+		for (int j = 0; j < length; j++) {
 			col += '-';
 		}
 		return col;
 	}
-	
-	void buildGrid(){
-		currGrid = new String[currSize];
+
+	void buildGrid() {
+		_grid = new String[_size];
 		clearGrid();
 	}
 
-	boolean updateGrid(Player[] players){
-		if(players.length != 2)
-			return false;
-		
+	public boolean update(Player[] players) {
 		clearGrid();
+		ConsoleLogger.Log("=> sets players at grid");
 		setNewPosition(players[0]);
 		setNewPosition(players[1]);
 		return true;
 	}
-	
-	void setNewPosition(Player player){
-		
-		for(int i = 0; i < currGrid.length; i++){
-			// horizontalle ---
-			
-			if(player.getY() == i){
-				// vertikale setzen: unter einander
-				char[] chars = currGrid[i].toCharArray();
-				
-				for(int j = 0; j < chars.length; j++){
-					if(player.getX() == j){
-						chars[j] = player.getName();
-					}
+
+	void setNewPosition(Player player) {
+
+		for (int line = 0; line < _grid.length; line++) {
+
+			if (player.getY() != line) {
+				continue;
+			}
+
+			// find row-point (x)
+			char[] cells = _grid[line].toCharArray();
+			for (int point = 0; point < cells.length; point++) {
+
+				if (player.getX() != point) {
+					continue;
 				}
-				
-				String col = chars.toString();
-				currGrid[i] = col;
+
+				// set U or T
+				cells[point] = player.getName();
+
+				String s1 = "";
+				for (int entry = 0; entry < cells.length; entry++) {
+					s1 += cells[entry];
+				}
+
+				// set new value
+				_grid[line] = s1;
+				break;
 			}
 		}
 	}
 	
 	
-	public int getSize(){
-		return currSize;
+
+	public int getSize() {
+		return _size;
 	}
-	
-	public String[] getGrid(){
-		return currGrid;
+
+	public String[] getGrid() {
+		return _grid;
 	}
 }
