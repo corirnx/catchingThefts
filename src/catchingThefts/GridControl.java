@@ -2,6 +2,8 @@ package catchingThefts;
 
 import java.util.Random;
 
+import catchingThefts.Helper.ConsoleLogger;
+import catchingThefts.Helper.OutputStringBuilder;
 import catchingThefts.Model.Grid;
 import catchingThefts.Model.Player;
 
@@ -11,27 +13,22 @@ public class GridControl {
 	Player[] _players;
 
 	public GridControl(Grid grid, Player[] players) {
-		// spielfeld vorbereiten
+		ConsoleLogger.Log("=>prepare field");
 		_grid = grid;
 		_players = players;
 		setRandomPosition();
 	}
 
 	void setRandomPosition() {
-
 		for (int i = 0; i < _players.length; i++) {
-			int x = randInt(_grid.getSize());
-			int y = randInt(_grid.getSize());
+			int x = getRandomInt(_grid.getSize());
+			int y = getRandomInt(_grid.getSize());
 			_players[i].setPosition(x, y);
 		}
-
 		_grid.update(_players);
-
-		// Player currUser = Positioners.getPosition(true, currGrid);
-		// currUser.Move(move);
 	}
 
-	int randInt(int max) {
+	int getRandomInt(int max) {
 		Random rand = new Random();
 		int randomNum = rand.nextInt(max + 1);
 		return randomNum;
@@ -39,19 +36,14 @@ public class GridControl {
 
 	public void start() {
 		displayGrid();
+		
+		// todo:  impl. nutzereingabe  
 	}
 
 	void displayGrid() {
-
+		String[] grid = _grid.getGrid();
 		for (int i = 0; i < _grid.getSize(); i++) {
-			String[] grid = _grid.getGrid();
-			String output = "";
-
-			char[] lines = grid[i].toCharArray();
-
-			for (int j = 0; j < lines.length; j++) {
-				output += lines[j] + " ";
-			}
+			String output = OutputStringBuilder.toStringWithWhitespace(grid[i]);
 			System.out.println(output);
 		}
 	}

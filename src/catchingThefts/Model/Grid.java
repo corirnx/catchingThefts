@@ -1,6 +1,7 @@
 package catchingThefts.Model;
 
 import catchingThefts.Helper.ConsoleLogger;
+import catchingThefts.Helper.OutputStringBuilder;
 
 public class Grid {
 
@@ -56,23 +57,16 @@ public class Grid {
 					continue;
 				}
 
-				// set U or T
+				// set new line with player at grid
+				// toDo: keine überschreibung von playern!
 				cells[point] = player.getName();
-
-				String s1 = "";
-				for (int entry = 0; entry < cells.length; entry++) {
-					s1 += cells[entry];
-				}
-
-				// set new value
-				_grid[line] = s1;
+				_grid[line] = OutputStringBuilder.charArrTo(cells);
 				break;
 			}
 		}
 	}
 	
 	
-
 	public int getSize() {
 		return _size;
 	}

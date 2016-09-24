@@ -28,14 +28,10 @@ public class GameStart {
 	
 		GridControl control = new GridControl(grid, new Player[]{theft, user});
 		
-		System.out.println("3");
-		System.out.println("2");
-		System.out.println("1");
-
-
 		System.out.println("===============");
 		System.out.println("go!");
-
+		System.out.println("===============");
+		
 		control.start();
 	}
 
