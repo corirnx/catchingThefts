@@ -1,8 +1,8 @@
-package catchingThefts.Helper;
+package catchingThefts.main.helper;
 
 import java.util.Random;
 
-import catchingThefts.Model.Player;
+import catchingThefts.main.models.Player;
 
 public final class InitialSetup {
 

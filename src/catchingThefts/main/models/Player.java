@@ -1,4 +1,4 @@
-package catchingThefts.Model;
+package catchingThefts.main.models;
 
 public class Player {
 

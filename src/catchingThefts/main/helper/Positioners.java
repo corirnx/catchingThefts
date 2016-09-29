@@ -1,6 +1,6 @@
-package catchingThefts.Helper;
+package catchingThefts.main.helper;
 
-import catchingThefts.Model.Player;
+import catchingThefts.main.models.Player;
 
 public final class Positioners {
 

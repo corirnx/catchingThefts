@@ -1,6 +1,6 @@
-package catchingThefts.Model;
+package catchingThefts.main.models;
 
-import catchingThefts.Helper.OutputStringBuilder;
+import catchingThefts.main.helper.OutputStringBuilder;
 
 public class Grid {
 

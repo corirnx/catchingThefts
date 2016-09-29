@@ -1,4 +1,4 @@
-package catchingThefts.Helper;
+package catchingThefts.main.helper;
 
 public final class ConsoleLogger {
 

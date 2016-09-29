@@ -1,6 +1,6 @@
-package catchingThefts.Helper;
+package catchingThefts.main.helper;
 
-import catchingThefts.Model.Move;
+import catchingThefts.main.models.Move;
 
 public final class MoveHandler {
 	

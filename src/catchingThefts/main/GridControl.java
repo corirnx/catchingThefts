@@ -1,14 +1,14 @@
-package catchingThefts;
+package catchingThefts.main;
 
 import java.util.Scanner;
 
-import catchingThefts.Helper.ConsoleLogger;
-import catchingThefts.Helper.InitialSetup;
-import catchingThefts.Helper.MoveHandler;
-import catchingThefts.Helper.OutputStringBuilder;
-import catchingThefts.Model.Grid;
-import catchingThefts.Model.Move;
-import catchingThefts.Model.Player;
+import catchingThefts.main.helper.ConsoleLogger;
+import catchingThefts.main.helper.InitialSetup;
+import catchingThefts.main.helper.MoveHandler;
+import catchingThefts.main.helper.OutputStringBuilder;
+import catchingThefts.main.models.Grid;
+import catchingThefts.main.models.Move;
+import catchingThefts.main.models.Player;
 
 
 public class GridControl {
