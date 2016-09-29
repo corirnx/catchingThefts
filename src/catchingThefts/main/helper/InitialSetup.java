@@ -6,6 +6,11 @@ import catchingThefts.main.models.Player;
 
 public final class InitialSetup {
 
+	/**
+	 * @param players are the game stones
+	 * @param size is the length of the grid; there is no higher x or y
+	 * @return if the method was successful
+	 */
 	public static boolean setRandomPosition(Player[] players, int size) {
 
 		try {
@@ -43,6 +48,7 @@ public final class InitialSetup {
 		return rand.nextInt(max + 1);
 	}
 
+	// check the conditions of x and y
 	static boolean IsntEquals(int x, int y, int lastX, int lastY) {
 		if (FirstIsEqls(x, lastX, y, lastY) || FirstIsEqls(y, lastY, x, lastX) || (x != lastX && y != lastY))
 			return true;

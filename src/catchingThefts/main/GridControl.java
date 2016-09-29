@@ -10,12 +10,12 @@ import catchingThefts.main.models.Grid;
 import catchingThefts.main.models.Move;
 import catchingThefts.main.models.Player;
 
-
 public class GridControl {
 
 	Grid _grid;
 	Player[] _players;
 
+	// is the whole playgroud with the players
 	public GridControl(Grid grid, Player[] players) {
 		ConsoleLogger.Log("=>prepare field");
 		_grid = grid;
@@ -34,44 +34,46 @@ public class GridControl {
 	}
 
 	void readUserInput() {
-		Scanner scanner = new Scanner(System.in);
-		String input = scanner.nextLine();
 
-		while (!input.toLowerCase().equals("exit")) {
+		try (Scanner scanner = new Scanner(System.in)) {
 
-			Move moveTo = MoveHandler.toMove(input);
-			
-			if(moveTo == Move.None){
-				// todo: handle other commands
-				input = scanner.nextLine();
-				//break;
-			}
-			
-			// nutzer bewegen
-			for (Player player : _players) {
-				if(player.IsUser()){
-					// bewegen
-					player.Move(moveTo);
-					// grid updaten
-					_grid.update(_players);
+			String input = scanner.nextLine();
+
+			// move the game stone like the input says
+			while (!input.toLowerCase().equals("exit")) {
+
+				Move moveTo = MoveHandler.toMove(input);
+
+				if (moveTo == Move.None) {
+					// TODO: handle other commands
+					input = scanner.nextLine();
+				}
+
+				// move each player and update the grid
+				for (Player player : _players) {
+
+					if (player.IsUser()) {
+						player.Move(moveTo);
+						_grid.update(_players);
+					}
+				}
+
+				displayGrid();
+
+				boolean gotCatched = checkForCatching();
+				if (gotCatched) {
+					ConsoleLogger.Log("YOU WIN");
+					break;
+				} else {
+					input = scanner.nextLine();
 				}
 			}
-			
-			displayGrid();
-			
-			boolean gotCatched = checkForCatching();
-			if(gotCatched){
-				ConsoleLogger.Log("YOU WIN");
-				break;
-			}else{
-				input = scanner.nextLine();
-			}
 		}
+
 	}
 
-
-	boolean checkForCatching(){
-		if(_players[0].getX() == _players[1].getX() && _players[0].getY() == _players[1].getY())
+	boolean checkForCatching() {
+		if (_players[0].getX() == _players[1].getX() && _players[0].getY() == _players[1].getY())
 			return true;
 		else
 			return false;

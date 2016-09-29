@@ -5,10 +5,14 @@ import java.util.Scanner;
 import catchingThefts.main.models.Grid;
 import catchingThefts.main.models.Player;
 
+/**
+ * @author corycoffee
+ * @since September 2016
+ */
 public class GameStart {
 
-	/**
-	 * this is the start of the game
+	/*
+	 * this is the beginning of the game
 	 */
 	public static void main(String[] args) {
 
@@ -18,8 +22,10 @@ public class GameStart {
 
 		System.out.println("enter grid size as integer: ");
 
+		// initials scanner to read user input
 		Scanner scanner = new Scanner(System.in);
 		int size = scanner.nextInt();
+
 		System.out.println("okay!");
 
 		Grid grid = new Grid(size);
@@ -35,7 +41,9 @@ public class GameStart {
 		System.out.println("enter as direction: 'down', 'up', 'left', 'right'");
 		System.out.println("===============");
 
+		// start the game
 		control.start();
+		scanner.close();
 	}
 
 }
