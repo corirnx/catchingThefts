@@ -2,11 +2,14 @@ package catchingThefts.Model;
 
 public class Player {
 
+	int _positionMax;
+	
 	int _x, _y;
 	boolean _isUser;
 	
-	public Player(boolean isUser){
+	public Player(boolean isUser, int maxPosition){
 		_isUser = isUser;
+		_positionMax = maxPosition;
 	}
 	
 	public boolean IsUser(){
@@ -21,8 +24,14 @@ public class Player {
 		return _y;
 	}
 	
-	public void MoveUp(){
-		_y--;
+	void setX(int value){
+		if(value <= _positionMax && value >= 0)
+			_x = value;
+	}
+	
+	void setY(int value){
+		if(value <= _positionMax && value >= 0)
+			_y = value;
 	}
 	
 	public char getName(){
@@ -35,23 +44,23 @@ public class Player {
 	}
 	
 	public void setPosition(int x, int y){
-		_x = x;
-		_y = y;
+		setX(x);
+		setY(y);
 	}
 	
 	public void Move(Move move){
 		switch(move){
 		case Down:
-			_y++;
+			setY(getY()+1);
 			break;
 		case Up:
-			_y--;
+			setY(getY()-1);
 			break;
 		case Left:
-			_x--;
+			setX(getX()-1);
 			break;
 		case Right:
-			_x++;
+			setX(getX()+1);
 			break;
 		}
 	}

@@ -21,8 +21,8 @@ public class GameStart {
 		System.out.println("okay!");
 		
 		Grid grid = new Grid(size);
-		Player theft = new Player(false);
-		Player user = new Player(true);
+		Player theft = new Player(false, (size-1));
+		Player user = new Player(true, (size-1));
 		
 		System.out.println("===============");
 	
