@@ -37,7 +37,7 @@ public class GridControl {
 
 		try (Scanner scanner = new Scanner(System.in)) {
 
-			String input = scanner.nextLine();
+			String input = HandleConsole.getInput(_players, scanner);
 
 			// move the game stone like the input says
 			while (!input.toLowerCase().equals("exit")) {
@@ -46,7 +46,7 @@ public class GridControl {
 
 				if (moveTo == Move.None) {
 					// TODO: handle other commands
-					input = scanner.nextLine();
+					input = HandleConsole.getInput(_players, scanner);
 				}
 
 				// move each player and update the grid
@@ -65,7 +65,7 @@ public class GridControl {
 					ConsoleLogger.Log("YOU WIN");
 					break;
 				} else {
-					input = scanner.nextLine();
+					input = HandleConsole.getInput(_players, scanner);
 				}
 			}
 		}

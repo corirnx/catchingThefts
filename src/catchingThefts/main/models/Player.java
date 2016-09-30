@@ -3,15 +3,19 @@ package catchingThefts.main.models;
 public class Player {
 
 	int _positionMax, _x, _y;
-	boolean _isUser;
+	boolean _isUser, _isVirtualUser;
 
-	public Player(boolean isUser, int maxPosition) {
+	public Player(boolean isUser,boolean isVirtual, int maxPosition) {
 		_isUser = isUser;
+		_isVirtualUser = isVirtual;
 		_positionMax = maxPosition;
 	}
 
 	public boolean IsUser() {
 		return _isUser;
+	}
+	public boolean IsVirtualUser(){
+		return _isVirtualUser;
 	}
 
 	public int getX() {
